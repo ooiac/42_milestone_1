@@ -84,15 +84,7 @@ The `...` means "accept any number of arguments of any type". Inside the functio
 - **Integer to character**: Take only the first byte
 - **String handling**: Check for NULL, copy safely
 
-#### Format Flags (Bonus)
-Many implementations support additional flags:
-- `-`: Left-align output
-- `0`: Pad with zeros instead of spaces
-- `+`: Always show sign for numbers
-- ` ` (space): Prefix positive numbers with space
-- `#`: Alternate form (0x for hex, 0 for octal)
-- Width specifiers: `%10d` (10 character width)
-- Precision: `%.5s` (max 5 characters for strings)
+
 
 ### Example Usage
 
@@ -249,17 +241,7 @@ Different buffer sizes have tradeoffs:
 - Medium (42, 100): Good balance
 - Large (4096, 65536): Fewer reads, more memory per fd
 
-### Handling Multiple File Descriptors (Bonus)
 
-The bonus version must correctly handle reading from multiple file descriptors simultaneously:
-
-```c
-char *line1 = get_next_line(3);  // Read from fd 3
-char *line2 = get_next_line(5);  // Read from fd 5
-char *line3 = get_next_line(3);  // Continue from fd 3
-```
-
-This requires careful buffer management—typically a linked list of buffers, one per fd.
 
 ### Edge Cases to Handle
 
@@ -414,26 +396,10 @@ Milestone 1 is where you stop implementing helper functions and start implementi
 - [ ] Handles files with no trailing newline
 - [ ] BUFFER_SIZE=1 works correctly
 - [ ] Memory is freed by caller (no leaks in get_next_line)
-- [ ] Multiple file descriptors work independently
 - [ ] Works with stdin (fd=0)
 
 ---
 
-## Bonus Features
 
-### ft_printf Bonus
-Many implementations include additional format specifiers and flags:
-- Width and precision: `%10d`, `%.5s`
-- Padding: `%-10d` (left align), `%010d` (zero pad)
-- Flags: `%+d` (always show sign), `% d` (space for positive)
-- Alternate form: `%#x` (0x prefix)
-
-### get_next_line Bonus
-- Handle multiple file descriptors simultaneously
-- Support various BUFFER_SIZE values
-- Optimized performance with large files
-- Robust error handling with proper cleanup
-
----
 
 **Congratulations on reaching Milestone 1! These projects are foundations for all your future work at 42.**
